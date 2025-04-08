@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ORDER</title>
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <style>
+            body {
+                padding-top: 70px;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="#">
+            <h3 style="text-align: center">ORDER ENTRY</h3>
+            <div
+                class="container border mb-5 mt-3 p-3"
+                style="text-align: center"
+            >
+                <div class="form-group">
+                    <label for="customer">CUSTOMER:</label> <br />
+                    <select name="customer" id="customer">
+                        <option value="customer1">Customer 1</option>
+                        <option value="customer2">Customer 2</option>
+                        <option value="customer3">Customer 3</option>
+                        <option value="customer4">Customer 4</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="customer">PRODUCT:</label> <br />
+                    <select name="product" id="product">
+                        <option value="product1">Product 1</option>
+                        <option value="product2">Product 2</option>
+                        <option value="product3">Product 3</option>
+                        <option value="product4">Product 4</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">QUANTITY:</label> <br />
+                    <input type="number" id="quantity" name="quantity" />
+                </div>
+                <div class="form-group">
+                    <label for="discount">DISCOUNT:</label> <br />
+                    <input type="number" id="discount" name="discount" />
+                </div>
+                <div class="form-group">
+                    <label for="totalprice">TOTAL AMOUNT:</label> <br />
+                    <input type="number" id="price" name="price" disabled />
+                </div>
+                <div class="form-group">
+                    <label for="discountprice">DISCOUNT AMOUNT:</label> <br />
+                    <input
+                        type="number"
+                        id="discountprice"
+                        name="discountprice"
+                        disabled
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="totalprice">FINAL AMOUNT:</label> <br />
+                    <input
+                        type="number"
+                        id="totalprice"
+                        name="totalprice"
+                        disabled
+                    />
+                </div>
+                <div class="form-group">
+                    <button
+                        type="button"
+                        onclick="ResultFunction();"
+                        class="btn btn-primary"
+                    >
+                        PLACE ORDER
+                    </button>
+                </div>
+            </div>
+        </form>
+        <script>
+            function ResultFunction() {
+                var quantity = parseInt(
+                    document.getElementById("quantity").value
+                );
+                var discount = parseInt(
+                    document.getElementById("discount").value
+                );
+                var product = document.getElementById("product").value;
+                var pricePerUnit;
+
+                switch (product) {
+                    case "product1":
+                        pricePerUnit = 1000;
+                        break;
+                    case "product2":
+                        pricePerUnit = 1500;
+                        break;
+                    case "product3":
+                        pricePerUnit = 2000;
+                        break;
+                    case "product4":
+                        pricePerUnit = 2500;
+                        break;
+                    default:
+                        pricePerUnit = 1000;
+                }
+
+                var price = quantity * pricePerUnit;
+                var discountprice = (price * discount) / 100;
+                var totalprice = price - discountprice;
+
+                document.getElementById("price").value = price;
+                document.getElementById("totalprice").value = totalprice;
+                document.getElementById("discountprice").value = discountprice;
+                alert("Order Submitted Successfully!");
+            }
+        </script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    </body>
+</html>

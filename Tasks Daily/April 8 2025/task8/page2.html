@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Payment-2</title>
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <style>
+            body {
+                padding-top: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="page3.html" onsubmit="Save()">
+            <div class="form-group">
+                <label for="details">ENTER CREDIT CARD DETAILS:</label>
+                <input
+                    type="text"
+                    maxlength="16"
+                    minlength="16"
+                    id="details"
+                    name="details"
+                />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">SUBMIT</button>
+            </div>
+        </form>
+        <script>
+            function Save() {
+                const details = document.getElementById("details").value;
+                localStorage.setItem("details", details);
+            }
+        </script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    </body>
+</html>

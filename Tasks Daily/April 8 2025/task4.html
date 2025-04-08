@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Student Result</title>
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <style>
+            body {
+                padding-top: 70px;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="#">
+            <h3>Student Result</h3>
+            <div class="form-group">
+                <label for="name">Name:</label> <br />
+                <input type="text" id="name" />
+            </div>
+            <div class="form-group">
+                <label for="m1">Marks-1:</label> <br />
+                <input type="number" id="m1" name="m1" />
+            </div>
+            <div class="form-group">
+                <label for="email">Marks-2:</label> <br />
+                <input type="number" id="m2" name="m2" />
+            </div>
+            <div class="form-group">
+                <label for="m3">Marks-3:</label> <br />
+                <input type="text" id="m3" name="m3" />
+            </div>
+            <div class="form-group">
+                <label for="percentage">Percentage:</label> <br />
+                <input type="text" id="percentage" name="percentage" disabled />
+            </div>
+            <div class="form-group">
+                <label for="result">Result:</label> <br />
+                <input type="text" id="result" name="result" disabled />
+            </div>
+            <div class="form-group">
+                <button
+                    type="button"
+                    onclick="ResultFunction();"
+                    class="btn btn-primary"
+                >
+                    Submit
+                </button>
+            </div>
+        </form>
+        <script>
+            function ResultFunction() {
+                var m1 = parseInt(document.getElementById("m1").value);
+                var m2 = parseInt(document.getElementById("m2").value);
+                var m3 = parseInt(document.getElementById("m3").value);
+                var percentage = (m1 + m2 + m3) / 3;
+                document.getElementById("percentage").value = percentage;
+                if (percentage >= 60) {
+                    document.getElementById("result").value = "Pass";
+                } else {
+                    document.getElementById("result").value = "Fail";
+                }
+                alert("Marks Submitted Successfully!");
+            }
+        </script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    </body>
+</html>

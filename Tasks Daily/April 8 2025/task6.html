@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>GUEST</title>
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <style>
+            body {
+                padding-top: 70px;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="#">
+            <h3 style="text-align: center">GUEST DETAILS</h3>
+            <div
+                class="container border mb-5 mt-3 p-3"
+                style="text-align: center"
+            >
+                <div class="form-group">
+                    <label for="name">Name:</label> <br />
+                    <input type="text" id="name" name="name" />
+                </div>
+                <div class="form-group">
+                    <label for="in">Check-in:</label> <br />
+                    <input type="date" id="in" name="in" />
+                </div>
+                <div class="form-group">
+                    <label for="out">Check-out:</label> <br />
+                    <input type="date" id="out" name="out" />
+                </div>
+            </div>
+
+            <h3 style="text-align: center">CHECK ROOM AVAILABILITY</h3>
+            <div
+                class="container border mb-5 mt-3 p-3"
+                style="text-align: center"
+            >
+                <div class="form-group">
+                    <input type="date" id="date" name="date" />
+                </div>
+                <div class="form-group">
+                    <button
+                        type="button"
+                        onclick="CheckFunction();"
+                        class="btn btn-primary"
+                    >
+                        CHECK
+                    </button>
+                </div>
+            </div>
+
+            <h3 style="text-align: center">CALCULATE TOTAL BOOKING DETAILS</h3>
+            <div
+                class="container border mb-5 mt-3 p-3"
+                style="text-align: center"
+            >
+                <div class="dropdown mb-3">
+                    <button
+                        class="btn btn-secondary dropdown-toggle"
+                        type="button"
+                        id="dropdownMenuButton"
+                        data-toggle="dropdown"
+                    >
+                        ROOM TYPE
+                    </button>
+                    <div class="dropdown-menu">
+                        <a
+                            class="dropdown-item"
+                            href="#"
+                            onclick="setActive(this);"
+                            >NON-AC</a
+                        >
+                        <a
+                            class="dropdown-item"
+                            href="#"
+                            onclick="setActive(this);"
+                            >AC</a
+                        >
+                        <a
+                            class="dropdown-item"
+                            href="#"
+                            onclick="setActive(this);"
+                            >LUXURY</a
+                        >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nights">NIGHTS:</label>
+                    <input type="number" name="nights" id="nights" />
+                </div>
+                <div class="form-group">
+                    <label for="totalCost">TOTAL COST:</label>
+                    <input
+                        type="number"
+                        name="totalCost"
+                        id="totalCost"
+                        disabled
+                    />
+                </div>
+                <div class="form-group">
+                    <button
+                        type="button"
+                        onclick="CostFunction();"
+                        class="btn btn-primary"
+                    >
+                        CALCULATE
+                    </button>
+                </div>
+            </div>
+        </form>
+        <script>
+            function CheckFunction() {
+                var date = document.getElementById("date").value;
+                var availableRooms = {
+                    "2025-04-08": ["NON-AC", "AC"],
+                    "2025-04-09": ["LUXURY", "AC"],
+                    "2025-04-10": ["NON-AC", "LUXURY"],
+                };
+
+                if (availableRooms[date]) {
+                    alert(
+                        "Rooms available on Date: " +
+                            date +
+                            ", are " +
+                            availableRooms[date].join(", ")
+                    );
+                } else {
+                    alert("No rooms are available on Date: " + date);
+                }
+            }
+
+            function setActive(element) {
+                document.querySelectorAll(".dropdown-item").forEach((item) => {
+                    item.classList.remove("active");
+                });
+                element.classList.add("active");
+            }
+
+            function CostFunction() {
+                var nights = parseInt(document.getElementById("nights").value);
+                var roomType = document.querySelector(".dropdown-item.active")
+                    ? document.querySelector(".dropdown-item.active")
+                          .textContent
+                    : "NON-AC";
+                var costPerNight = 0;
+
+                switch (roomType) {
+                    case "NON-AC":
+                        costPerNight = 2000;
+                        break;
+                    case "AC":
+                        costPerNight = 3000;
+                        break;
+                    case "LUXURY":
+                        costPerNight = 4000;
+                        break;
+                    default:
+                        costPerNight = 2000;
+                }
+
+                var totalCost = nights * costPerNight;
+                document.getElementById("totalCost").value = totalCost;
+            }
+        </script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AI Chatbot: Tech Company Case Study</title>
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <style>
+            body {
+                padding-top: 50px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>AI Chatbot: Tech Company Case Study</h1>
+        <hr />
+        <div id="chat-container">
+            <div id="messages"></div>
+            <input
+                type="text"
+                name="userInput"
+                id="userInput"
+                placeholder="Type A Message"
+            />
+            <button id="sendBtn">Send</button>
+        </div>
+
+        <script>
+            //Encapsulation: Wrapping functionalities inside Chatbot Class
+            class Chatbot {
+                constructor(name) {
+                    this.name = name;
+                    this.messages = [];
+                }
+
+                //Abstraction: Hiding internal massage processing logic
+                processMessage(input) {
+                    return input.includes("Hello")
+                        ? "Hi there! How can I assist?"
+                        : "I am still learning!";
+                }
+
+                sendMessage(userMessage) {
+                    const botReply = this.processMessage(userMessage);
+                    this.messages.push({ user: userMessage, bot: botReply });
+
+                    return botReply;
+                }
+            }
+
+            //Inheritance: Extending Chatbot functionalities
+            class SmartChatbot extends Chatbot {
+                constructor(name, version) {
+                    super(name);
+                    this.version = version;
+                }
+
+                //Polymorphism: Overriding parent method
+                processMessage(input) {
+                    return input.includes("AI")
+                        ? "AI is transforming industries!"
+                        : super.processMessage(input);
+                }
+            }
+
+            //Closures: Keeping private chatbot state inside function
+            const chatbotManager = (function () {
+                let bot = new SmartChatbot("TechBot", "1.0");
+
+                return {
+                    getBot: function () {
+                        return bot;
+                    },
+                };
+            })();
+
+            const chatbot = chatbotManager.getBot();
+
+            //DOM Manipulation: Updating chat messages dynamically
+            function updateChat(userMsg) {
+                const botResponse = chatbot.sendMessage(userMsg);
+                const messagesDiv = document.getElementById("messages");
+
+                messagesDiv.innerHTML += `<div class='message'><strong>You:</strong> ${userMsg}</div>`;
+                messagesDiv.innerHTML += `<div class='message'><strong>${chatbot.name}:</strong> ${botResponse}</div>`;
+            }
+
+            //Error Handling: Prevent empty message errors
+            function handleSend() {
+                try {
+                    const userInput = document.getElementById("userInput");
+                    if (!userInput.value.trim()) {
+                        throw new Error("Message cannot be empty!");
+                    }
+                    updateChat(userInput.value);
+                    userInput.value = ""; //Reset input field
+                } catch (error) {
+                    alert(error.message);
+                }
+            }
+
+            //Event handling: Sending messages on button click
+            document
+                .getElementById("sendBtn")
+                .addEventListener("click", handleSend);
+        </script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    </body>
+</html>

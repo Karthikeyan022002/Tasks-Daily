@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Education Sector Case Study</title>
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <style>
+            body {
+                padding-top: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Education Sector Case Study</h1>
+        <div id="students"></div>
+
+        <script>
+            //Abstraction & Encapsulation using Class
+            class Student {
+                #grades; //Private property or Private variable name
+
+                constructor(name, age) {
+                    this.name = name;
+                    this.age = age;
+                    this.#grades = []; //Private variable initialization
+                }
+
+                addGrade(grade) {
+                    if (typeof grade !== "number") {
+                        throw new Error("Grade must be a number");
+                    }
+                    this.#grades.push(grade); //Private variable access
+                }
+
+                getAverageGrade() {
+                    const total = this.#grades.reduce(
+                        (acc, val) => acc + val,
+                        0
+                    );
+                    return (total / this.#grades.length).toFixed(2);
+                }
+
+                getInfo() {
+                    return `Name: ${this.name}, Age: ${
+                        this.age
+                    }, Average Grade: ${this.getAverageGrade()}`;
+                }
+            }
+
+            //Inheritance
+            class GraduateStudent extends Student {
+                constructor(name, age, thesisTopic) {
+                    super(name, age);
+                    this.thesisTopic = thesisTopic;
+                }
+
+                getInfo() {
+                    return `${super.getInfo()}, Thesis: ${this.thesisTopic}`;
+                }
+            }
+
+            //Polymorphism through function overriding
+            const students = [
+                new Student("Alice", 20),
+                new GraduateStudent("Bob", 24, "AI in Education"),
+            ];
+
+            //Add sample grades with error handling
+            students.forEach((student) => {
+                try {
+                    student.addGrade(80);
+                    student.addGrade(90);
+                } catch (err) {
+                    console.error(err.message);
+                }
+            });
+
+            //Closure Example
+            function createCounter() {
+                let count = 0;
+                return function () {
+                    count++;
+                    return count;
+                };
+            }
+            const studentIdCounter = createCounter();
+
+            //DOM Manipulation
+            const container = document.getElementById("students");
+
+            students.forEach((student) => {
+                const card = document.createElement("div");
+                card.className = "student-card";
+
+                const id = studentIdCounter();
+                card.innerHTML = `<strong>Student ID: ${id}</strong><br>${student.getInfo()}`;
+
+                const btn = document.createElement("button");
+                btn.textContent = "Show Greeting";
+
+                //Event Handling
+                btn.addEventListener("click", () => {
+                    alert(`Hello, ${student.name}! Keep up the good work!`);
+                });
+
+                card.appendChild(btn);
+                container.appendChild(card);
+            });
+
+            //Object Example
+            const school = {
+                name: "Future Academy",
+                location: "Online",
+                students: students,
+                getStudentCount() {
+                    return this.students.length;
+                },
+            };
+            console.log(
+                `School: ${
+                    school.name
+                }, Total Students: ${school.getStudentCount()}`
+            );
+        </script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    </body>
+</html>

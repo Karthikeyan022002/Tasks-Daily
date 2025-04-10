@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Customer</title>
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <style>
+            body {
+                padding-top: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <h3 style="text-align: center">CUSTOMER</h3>
+            <div
+                class="container border mb-5 mt-3 p-3"
+                style="text-align: center"
+            >
+                <div class="form-group">
+                    <label for="name">NAME:</label>
+                    <input type="text" id="name" name="name" />
+                </div>
+                <div class="form-group">
+                    <label for="age">AGE:</label>
+                    <input type="number" id="age" name="age" />
+                </div>
+                <div class="form-group">
+                    <label for="dob">DOB:</label>
+                    <input type="date" id="dob" name="dob" />
+                </div>
+                <div class="form-group">
+                    <label for="mobile">MOBILE NUMBER:</label>
+                    <input type="text" id="mobile" name="mobile" />
+                </div>
+                <div class="form-group">
+                    <label for="mobile">LOCAL CUSTOMER:</label>
+                    <input type="checkbox" id="local" name="local" />
+                </div>
+                <div class="form-group">
+                    <button
+                        type="button"
+                        onclick="AddFunction();"
+                        class="btn btn-primary"
+                    >
+                        ADD
+                    </button>
+                </div>
+            </div>
+
+            <div
+                class="container border mb-5 mt-3 p-3"
+                style="text-align: center"
+            >
+                <p id="output"></p>
+            </div>
+
+            <script>
+                class Customer {
+                    constructor(name, age, dob, mobile, local) {
+                        this.name = name;
+                        this.age = age;
+                        this.dob = dob;
+                        this.mobile = mobile;
+                        this.local = local;
+                    }
+                }
+
+                function AddFunction() {
+                    const name = document.getElementById("name").value;
+                    const age = document.getElementById("age").value;
+                    const dob = document.getElementById("dob").value;
+                    const mobile = document.getElementById("mobile").value;
+                    const local = document.getElementById("local").checked;
+
+                    const addCustomer = new Customer(
+                        name,
+                        age,
+                        dob,
+                        mobile,
+                        local
+                    );
+
+                    document.getElementById("output").innerHTML =
+                        "NAME: " +
+                        addCustomer.name +
+                        "<br />" +
+                        "AGE: " +
+                        addCustomer.age +
+                        "<br />" +
+                        "DOB: " +
+                        addCustomer.dob +
+                        "<br />" +
+                        "MOBILE: " +
+                        addCustomer.mobile +
+                        "<br />" +
+                        "IS LOCAL CUSTOMER: " +
+                        addCustomer.local;
+                }
+            </script>
+        </form>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    </body>
+</html>

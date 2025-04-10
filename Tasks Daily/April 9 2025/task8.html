@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Class</title>
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <style>
+            body {
+                padding-top: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="output1">The brand of the bike is:</div>
+        <div id="output2">Total gears in the bike is:</div>
+        <script>
+            //Parent Class
+            class Bike {
+                constructor() {
+                    this.gears = 5;
+                }
+                getGears() {
+                    return this.gears;
+                }
+            }
+
+            //Child Class
+            class suzuki extends Bike {
+                constructor() {
+                    super();
+                    this.brand = "Yamaha";
+                }
+                getBrand() {
+                    return this.brand;
+                }
+            }
+
+            const suzukiBike = new suzuki();
+            document.getElementById("output1").innerHTML +=
+                suzukiBike.getBrand();
+            document.getElementById("output2").innerHTML +=
+                suzukiBike.getGears();
+        </script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    </body>
+</html>

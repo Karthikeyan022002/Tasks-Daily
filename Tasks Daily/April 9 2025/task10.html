@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Booking</title>
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <style>
+            body {
+                padding-top: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <h3 style="text-align: center">BOOKING FORM</h3>
+            <div
+                class="container border mb-5 mt-3 p-3"
+                style="text-align: center"
+            >
+                <div class="form-group">
+                    <label for="vendor">VENDOR:</label>
+                    <input
+                        type="text"
+                        id="vendor"
+                        name="vendor"
+                        placeholder="Enter Vendor"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="speed">SPEED:</label>
+                    <input
+                        type="number"
+                        id="speed"
+                        name="speed"
+                        placeholder="Enter Speed"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="path">PATH:</label>
+                    <input
+                        type="text"
+                        id="path"
+                        name="path"
+                        placeholder="Enter Path"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="type">TYPE:</label>
+                    <select id="type" name="type" onclick="DetailsFunction()">
+                        <option value="Select">Select</option>
+                        <option value="Flight">Flight</option>
+                        <option value="Truck">Truck</option>
+                        <option value="Train">Train</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="path">DETAILS:</label>
+                    <p id="output"></p>
+                </div>
+                <div class="form-group">
+                    <button
+                        type="button"
+                        onclick="BookFunction();"
+                        class="btn btn-primary"
+                    >
+                        BOOK
+                    </button>
+                </div>
+            </div>
+
+            <script>
+                //Parent Class
+                class Transport {
+                    constructor(vendor, speed, path) {
+                        this.vendor = vendor;
+                        this.speed = speed;
+                        this.path = path;
+                    }
+                }
+
+                //Child Class
+                class Flight extends Transport {
+                    constructor(vendor, speed, path, weight) {
+                        super(vendor, speed, path);
+                        this.weight = weight;
+                    }
+                }
+                class Truck extends Transport {
+                    constructor(vendor, speed, path, capacity) {
+                        super(vendor, speed, path);
+                        this.capacity = capacity;
+                    }
+                }
+                class Train extends Transport {
+                    constructor(vendor, speed, path, coaches) {
+                        super(vendor, speed, path);
+                        this.coaches = coaches;
+                    }
+                }
+
+                function DetailsFunction() {
+                    const vendor = document.getElementById("vendor").value;
+                    const speed = document.getElementById("speed").value;
+                    const path = document.getElementById("path").value;
+                    const type = document.getElementById("type").value;
+
+                    let transport;
+                    if (type === "Flight") {
+                        transport = new Flight(vendor, speed, path, 1000);
+                        document.getElementById(
+                            "output"
+                        ).innerHTML = `The ${type} has a Weight of ${transport.weight} kg.`;
+                    } else if (type === "Truck") {
+                        transport = new Truck(vendor, speed, path, 2000);
+                        document.getElementById(
+                            "output"
+                        ).innerHTML = `The ${type} has a Capacity of ${transport.capacity} kg.`;
+                    } else if (type === "Train") {
+                        transport = new Train(vendor, speed, path, 10);
+                        document.getElementById(
+                            "output"
+                        ).innerHTML = `The ${type} has a total of ${transport.coaches} Coaches.`;
+                    } else {
+                        document.getElementById(
+                            "output"
+                        ).innerHTML = `Invalid type selected.`;
+                    }
+                }
+
+                function BookFunction() {
+                    const vendor = document.getElementById("vendor").value;
+                    const speed = document.getElementById("speed").value;
+                    const path = document.getElementById("path").value;
+                    const type = document.getElementById("type").value;
+                    const output = document.getElementById("output").innerHTML;
+                    alert(
+                        `Booking Successful for ${type} with vendor ${vendor}, which has a speed of ${speed} km/h and path of ${path} with details of ${output}`
+                    );
+                }
+            </script>
+        </form>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    </body>
+</html>

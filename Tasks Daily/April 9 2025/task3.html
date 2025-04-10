@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>User-Defined Objects</title>
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <style>
+            body {
+                padding-top: 50px;
+            }
+        </style>
+        <script type="text/javascript">
+            var book = new Object(); //Create the object
+            book.subject = "Perl"; //Assign properties to the object
+            book.author = "Mohtashim";
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            document.write("Book Name is: " + book.subject + "<br />");
+            document.write("Book Author is: " + book.author + "<br />");
+        </script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    </body>
+</html>

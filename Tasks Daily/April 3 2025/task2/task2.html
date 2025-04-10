@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <form action="#" onsubmit="storeData(event)">
+            <header>
+                <fieldset>
+                    <div style="font-size: larger; text-align: center">
+                        PERSONAL DATA
+                    </div>
+                </fieldset>
+            </header>
+            <main>
+                <section>
+                    <article>
+                        <fieldset>
+                            <div style="text-align: center">
+                                <p>
+                                    Name:
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        placeholder="Enter Your Name"
+                                        required
+                                    />
+                                </p>
+                                <p>
+                                    Age:
+                                    <input
+                                        type="number"
+                                        id="age"
+                                        name="age"
+                                        placeholder="Enter Your Age"
+                                        required
+                                    />
+                                </p>
+                                <p>
+                                    Salary:
+                                    <input
+                                        type="number"
+                                        id="salary"
+                                        name="salary"
+                                        placeholder="Enter Your Salary"
+                                        required
+                                    />
+                                </p>
+                                <p>
+                                    <input type="submit" value="Value Data" />
+                                </p>
+                            </div>
+                        </fieldset>
+                        <script>
+                            function storeData(event) {
+                                event.preventDefault();
+                                const name =
+                                    document.getElementById("name").value;
+                                const age =
+                                    document.getElementById("age").value;
+                                const salary =
+                                    document.getElementById("salary").value;
+
+                                localStorage.setItem("name", name);
+                                localStorage.setItem("age", age);
+                                localStorage.setItem("salary", salary);
+
+                                alert("Data stored successfully!");
+
+                                window.location.href = "task_2.html";
+                            }
+                        </script>
+                    </article>
+                </section>
+            </main>
+        </form>
+    </body>
+</html>

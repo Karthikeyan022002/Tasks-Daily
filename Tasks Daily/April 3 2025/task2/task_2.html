@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <header>
+            <fieldset>
+                <div style="font-size: larger; text-align: center">
+                    PERSONAL DATA
+                </div>
+                <div style="font-size: larger; text-align: right">
+                    <a href="task2.html">ADD PERSONAL DATA</a>
+                </div>
+            </fieldset>
+        </header>
+        <main>
+            <section>
+                <article>
+                    <fieldset>
+                        <div style="text-align: center">
+                            <p>Name: <span id="name"></span></p>
+                            <p>Age: <span id="age"></span></p>
+                            <p>Salary: <span id="salary"></span></p>
+                        </div>
+                        <script>
+                            document.getElementById("name").textContent =
+                                localStorage.getItem("name") || "N/A";
+                            document.getElementById("age").textContent =
+                                localStorage.getItem("age") || "N/A";
+                            document.getElementById("salary").textContent =
+                                localStorage.getItem("salary") || "N/A";
+                        </script>
+                    </fieldset>
+                </article>
+            </section>
+        </main>
+    </body>
+</html>

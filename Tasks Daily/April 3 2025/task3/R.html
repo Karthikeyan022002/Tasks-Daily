@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            window.onload = function () {
+                document.getElementById("points").textContent =
+                    localStorage.getItem("points") || "N/A";
+            };
+        </script>
+    </head>
+    <body>
+        <header>
+            <fieldset>
+                <div style="font-size: larger; text-align: center">
+                    HTML MCQ's
+                </div>
+                <div style="font-size: larger; text-align: right">
+                    <a
+                        href="Q1.html"
+                        onclick="localStorage.setItem('points', 0)"
+                    >
+                        Re-Test
+                    </a>
+                </div>
+            </fieldset>
+        </header>
+        <main>
+            <section>
+                <article>
+                    <fieldset>
+                        <div style="text-align: center">
+                            <p>Result: <span id="points"></span></p>
+                        </div>
+                    </fieldset>
+                </article>
+            </section>
+        </main>
+    </body>
+</html>

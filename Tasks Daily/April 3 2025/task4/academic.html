@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            function storeData(event) {
+                event.preventDefault();
+                const qualification =
+                    document.getElementById("qualification").value;
+                sessionStorage.setItem("qualification", qualification);
+
+                alert("Data stored successfully!");
+                window.location.href = "result.html";
+            }
+        </script>
+    </head>
+    <body>
+        <form action="#" onsubmit="storeData(event)">
+            <header>
+                <fieldset>
+                    <div style="font-size: larger; text-align: center">
+                        ACADEMIC DATA
+                    </div>
+                </fieldset>
+            </header>
+            <main>
+                <section>
+                    <article>
+                        <fieldset>
+                            <div style="text-align: center">
+                                <p>
+                                    Qualification:
+                                    <select
+                                        id="qualification"
+                                        name="qualification"
+                                        required
+                                    >
+                                        <option value="" disabled selected>
+                                            Select Qualification
+                                        </option>
+                                        <option value="graduation">
+                                            Graduation
+                                        </option>
+                                        <option value="postgraduation">
+                                            Post-Graduation
+                                        </option>
+                                    </select>
+                                </p>
+                                <p>
+                                    <input type="submit" value="Submit" />
+                                </p>
+                            </div>
+                        </fieldset>
+                    </article>
+                </section>
+            </main>
+        </form>
+    </body>
+</html>

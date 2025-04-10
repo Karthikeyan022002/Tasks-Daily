@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            function storeData(event) {
+                event.preventDefault();
+                const choice = document.getElementsByName("options");
+                let points = parseInt(localStorage.getItem("points")) || 0; // Initialize points as a number
+
+                if (
+                    !choice[0].checked &&
+                    !choice[1].checked &&
+                    !choice[2].checked &&
+                    !choice[3].checked
+                ) {
+                    alert("Please select an option.");
+                    return;
+                }
+                if (choice[2].checked) {
+                    alert("Correct Answer!");
+                    points++;
+                } else {
+                    alert("Wrong Answer!");
+                    points--;
+                }
+                localStorage.setItem("points", points);
+                try {
+                    window.location.href = "Q2.html";
+                } catch (error) {
+                    console.error("Navigation failed:", error);
+                }
+            }
+
+            window.onload = function () {
+                const pointsInput = document.getElementById("points");
+                pointsInput.value = localStorage.getItem("points") || 0;
+            };
+        </script>
+    </head>
+    <body>
+        <form action="Q2.html" method="post" onsubmit="storeData(event)">
+            <header>
+                <fieldset>
+                    <div style="font-size: larger; text-align: center">
+                        HTML MCQ's
+                    </div>
+                </fieldset>
+            </header>
+            <main>
+                <section>
+                    <article>
+                        <fieldset>
+                            <div style="text-align: center">
+                                <p>
+                                    Question - 1: Which attribute specifies an
+                                    alternate text for an image, if the image
+                                    cannot be displayed?
+                                </p>
+                                <p>
+                                    Options:
+                                    <input
+                                        type="radio"
+                                        name="options"
+                                        id="option1"
+                                    />
+                                    'src' <br />
+                                    <input
+                                        type="radio"
+                                        name="options"
+                                        id="option2"
+                                    />
+                                    'href' <br />
+                                    <input
+                                        type="radio"
+                                        name="options"
+                                        id="option3"
+                                    />
+                                    'alt' <br />
+                                    <input
+                                        type="radio"
+                                        name="options"
+                                        id="option4"
+                                    />
+                                    'title'
+                                </p>
+                                <p>
+                                    <input type="submit" value="Next" />
+                                </p>
+                            </div>
+                            <div style="text-align: right">
+                                <p>
+                                    Points:
+                                    <input type="number" id="points" readonly />
+                                </p>
+                            </div>
+                        </fieldset>
+                    </article>
+                </section>
+            </main>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <header>
+            <fieldset>
+                <div
+                    style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        position: relative;
+                    "
+                >
+                    <div>
+                        <img
+                            src="data:image/jpeg;base64,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"
+                            alt="LOGO"
+                            height="50"
+                            width="50"
+                        />
+                    </div>
+                    <div style="font-size: larger">DASHBOARD</div>
+                    <div>
+                        <a href="#">PROFILE</a>
+                    </div>
+                </div>
+            </fieldset>
+        </header>
+        <nav>
+            <fieldset>
+                <div
+                    style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        position: relative;
+                    "
+                >
+                    <div>HOME</div>
+                    <div>ABOUT</div>
+                    <div>CONTACT</div>
+                </div>
+            </fieldset>
+        </nav>
+        <main>
+            <section>
+                <fieldset>
+                    <legend>About</legend>
+                    <h4>Have a Good Day</h4>
+                </fieldset>
+            </section>
+            <section>
+                <fieldset>
+                    <legend>CUSTOMER</legend>
+                    <article>
+                        <fieldset>
+                            <form action="#">
+                                <p>
+                                    Name:
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        required
+                                    />
+                                </p>
+                                <p>
+                                    Email:
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        required
+                                    />
+                                </p>
+                                <p>
+                                    Phone:
+                                    <input
+                                        type="tel"
+                                        id="phone"
+                                        name="phone"
+                                        required
+                                    />
+                                </p>
+                                <p>
+                                    Address:
+                                    <input
+                                        type="text"
+                                        id="address"
+                                        name="address"
+                                        required
+                                    />
+                                </p>
+                                <p>
+                                    <input type="submit" value="Submit" />
+                                </p>
+                            </form>
+                        </fieldset>
+                    </article>
+                    <aside><fieldset>PRODUCT</fieldset></aside>
+                </fieldset>
+            </section>
+        </main>
+        <footer><fieldset>DESIGNED BY ABC COMPANY</fieldset></footer>
+    </body>
+</html>

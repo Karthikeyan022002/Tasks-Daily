@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <form action="#" method="post">
+            <p>
+                Name:
+                <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="Enter Your Name"
+                />
+            </p>
+            <p>
+                User ID:
+                <input
+                    type="text"
+                    name="user_id"
+                    id="user_id"
+                    placeholder="Enter Your User ID"
+                />
+            </p>
+            <p>
+                Password:
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="Enter Your Password"
+                />
+            </p>
+            <p>
+                Gender: <input type="radio" name="gender" id="male" />Male
+                <input type="radio" name="gender" id="female" /> Female
+            </p>
+            <p>
+                Is Manager:
+                <input type="checkbox" name="is_manager" id="is_manager" />
+            </p>
+            <p>
+                Department:
+                <select name="department" id="department">
+                    <option value="System">System</option>
+                    <option value="Software">Software</option>
+                    <option value="Network">Network</option>
+                </select>
+            </p>
+            <p>
+                Address: <br />
+                <textarea
+                    name="address"
+                    id="address"
+                    rows="5"
+                    cols="50"
+                    placeholder="Enter Your Address"
+                ></textarea>
+            </p>
+            <p>Document: <input type="file" name="document" id="document" /></p>
+            <p>
+                <input type="submit" value="Submit" />
+                <input type="reset" value="Reset" /> <button>Validate</button>
+            </p>
+        </form>
+    </body>
+</html>

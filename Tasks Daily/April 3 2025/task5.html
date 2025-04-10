@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            function calculateOutput() {
+                const quantity = parseFloat(
+                    document.getElementById("quantity").value
+                );
+                const price = parseFloat(
+                    document.getElementById("price").value
+                );
+                document.getElementById("output").value = quantity * price;
+            }
+        </script>
+    </head>
+    <body>
+        <header>
+            <fieldset>
+                <div style="font-size: larger">PRODUCT</div>
+            </fieldset>
+        </header>
+        <main>
+            <fieldset>
+                <p>
+                    Quantity:
+                    <input
+                        type="number"
+                        id="quantity"
+                        name="quantity"
+                        placeholder="Enter Quantity"
+                        required
+                    />
+                </p>
+                <p>
+                    Price:
+                    <input
+                        type="number"
+                        id="price"
+                        name="price"
+                        placeholder="Enter Price"
+                        required
+                    />
+                </p>
+                <p>
+                    Output:
+                    <output id="output" name="output" />
+                </p>
+                <p>
+                    <button onclick="calculateOutput()">Calculate</button>
+                </p>
+            </fieldset>
+        </main>
+    </body>
+</html>

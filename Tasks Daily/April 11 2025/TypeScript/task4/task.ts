@@ -96,35 +96,35 @@ class Appointment implements I_Appointment {
     }
 }
 
-//Patients Data Storage for
+//Patients Data Storage
 const patients: Patient[] = [
     new Patient(1, "A", "A", "15/07/2001"),
     new Patient(2, "B", "B", "05/11/2003"),
     new Patient(3, "C", "C", "25/04/2010"),
 ];
 
-//Doctors Data Storage for
+//Doctors Data Storage
 const doctors: Doctor[] = [
     new Doctor(1, "Dr. X", "X", "Cardiology"),
     new Doctor(2, "Dr. Y", "Y", "Neurology"),
     new Doctor(3, "Dr. Z", "Z", "Pediatrics"),
 ];
 
-//Rooms Data Storage for
+//Rooms Data Storage
 const rooms: Room[] = [
     new Room(1, "Room U", "Consultation"),
     new Room(2, "Room V", "Surgery"),
     new Room(3, "Room W", "Recovery"),
 ];
 
-//Medicines Data Storage for
+//Medicines Data Storage
 const medicines: Medicine[] = [
     new Medicine(1, "Paracetamol", ["Paracetamol", "Starch"]),
     new Medicine(2, "Ibuprofen", ["Ibuprofen", "Lactose"]),
     new Medicine(3, "Amoxicillin", ["Amoxicillin", "Magnesium Stearate"]),
 ];
 
-//Appointments Data Storage for
+//Appointments Data Storage
 const appointments: Appointment[] = [
     new Appointment(1, 1, 1, "12/03/2025", "Routine Checkup", 1, 1),
     new Appointment(2, 2, 2, "13/03/2025", "Headache Consultation", 2, 2),

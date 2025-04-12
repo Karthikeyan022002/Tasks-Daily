@@ -1,13 +1,79 @@
 npm install -g @angular/cli@15
-
+---------------------------------------------------------------------------------------------------------------------
 npx ng new user-list
 cd user-list
 npm start (ng serve)
 http://localhost:4200/
-
+---------------------------------------------------------------------------------------------------------------------
 open .
-
+---------------------------------------------------------------------------------------------------------------------
 npx ng new my-app
 cd my-app
 npx ng generate module my-module
 npx ng generate component my-module/my-list
+---------------------------------------------------------------------------------------------------------------------
+Make Changes in the following files:-
+main.ts
+//here, add (MyModuleModule) instead of AppModule  in .bootstrapModule
+my-module.module.ts
+//here, add imports (BrowserModule, AppRoutingModule), providers and bootstrap (MyListComponent) inside @NgModule
+my-list.component.ts
+//copy selector name (app-my-list)
+index.html
+//here, add <app-my-list></app-my-list> selectors instead of <app-root></app-root> in body tag
+my-list.component.html
+//here, add <router-outlet></router-outlet>
+---------------------------------------------------------------------------------------------------------------------
+npx ng generate service my-module/my-service
+---------------------------------------------------------------------------------------------------------------------
+my-service.service.ts
+//Inside class MyServiceService, add the following code
+getUsers() {
+    return ['Alice', 'Bob', 'Charlie'];
+  }
+---------------------------------------------------------------------------------------------------------------------
+my-list.component.ts
+//Inside class MyListComponent, add the following code
+  users: string[] = [];
+  constructor(private myService: MyServiceService) {}
+
+  ngOnInit() {
+    this.users = this.myService.getUsers();
+  }
+---------------------------------------------------------------------------------------------------------------------
+my-list.component.html
+//here, add the following code
+<p>my-list works!</p>
+<ul>
+  <li *ngFor="let user of users">{{ user }}</li>
+</ul>
+<router-outlet></router-outlet>
+---------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

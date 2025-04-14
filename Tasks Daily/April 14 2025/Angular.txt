@@ -1,0 +1,21 @@
+npx ng new lms-app
+cd lms-app
+npx ng generate module lms --routing
+npx ng generate component root --module lms
+---------------------------------------------------------------------------------------------------------------------
+//Generate Login Component
+npx ng generate component login --module lms
+//Generate Dashboard Component
+npx ng generate component dashboard --module lms
+//Generate Students Component
+npx ng generate component students --module lms
+---------------------------------------------------------------------------------------------------------------------
+login.component.html
+<p>Login</p>
+<form [formGroup]="LoginForm" (ngSubmit)="login()">
+  <label>User Name: <input type="text" formControlName="username" /></label>
+  <label>Password: <input type="password" formControlName="password" /></label>
+  <button type="submit">Login</button>
+</form>
+---------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------

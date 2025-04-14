@@ -18,4 +18,33 @@ login.component.html
   <button type="submit">Login</button>
 </form>
 ---------------------------------------------------------------------------------------------------------------------
+-template form
+-reactive form
+Added in Angular 15
+Dynamically generate the forms
+---------------------------------------------------------------------------------------------------------------------
+login.component.ts
+export class LoginComponent {
+  loginForm: FormGroup;
+  constructor(private fb: FormBuilder, private router: Router) {
+    this.loginForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+  }
+
+  login() {
+    if (this.loginForm.valid) {
+      const uid = this.loginForm.value.username;
+      const pwd = this.loginForm.value.password;
+      if (uid == 'admin' && pwd == 'admin@123') {
+        this.router.navigate(['dashboard']);
+      } else {
+        alert('Invalid Credentials!');
+      }
+    } else {
+      alert('Please Fill All The Fields!');
+    }
+  }
+}
 ---------------------------------------------------------------------------------------------------------------------
